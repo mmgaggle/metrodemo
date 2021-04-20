@@ -6,14 +6,15 @@ from time import sleep
 
 print('ready for work!')
 
-sqlAddr = os.getenv('SERVER', 'mariadb.sysbench')
+driver = os.getenv('DRIVER', '/usr/lib64/libmaodbc.so')
+host = os.getenv('SERVER', 'mariadb.sysbench')
 db = os.getenv('DB', 'mariadb')
 user = os.getenv('USER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
-conn = pyodbc.connect('Driver={CData ODBC Driver for MariaDB};'
-                      'Server=${sqlAddr};'
+conn = pyodbc.connect('Driver=${driver};'
+                      'Server=${host};'
                       'Database=${db};'
                       'uid=${user};'
                       'pwd=${password};'

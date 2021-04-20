@@ -11,7 +11,7 @@ ENV JUPYTER_ENABLE_LAB="true" \
     THOTH_PROVENANCE_CHECK="0"
 USER root
 
-RUN yum install -y git maven unixODBC-devel
+RUN yum install -y git maven unixODBC-devel mariadb-connector-odbc
 RUN pip install wheel
 RUN pip install shortuuid pyodbc
 RUN mkdir -p /opt/builds

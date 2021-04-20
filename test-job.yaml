@@ -14,20 +14,13 @@ spec:
             nodeSelectorTerms:
             - matchExpressions:
               - key: kubernetes.io/hostname
-                operator: In 
+                operator: NotIn 
                 values:
-                - perf1-mz8bt-worker-d2hdm
-                - perf1-mz8bt-worker-k68rv
-                - perf1-mz8bt-worker-ntkp8
-                - perf1-mz8bt-worker-qpwsr
+                - perf1-mz8bt-worker-cv55w
       containers:
       - name: gameoflife
         image: gameoflife:local-build
         imagePullPolicy: Always
-        command: ["python3",  "/usr/bin/build.py"]
-        env:
-        - name: DB
-          value: 'redhat'
-        - name: SERVER
-          value: '172.30.25.239'
+        #command: ["python3",  "/usr/bin/build.py"]
+        command: ["tail", "-f", "/dev/null"]
       restartPolicy: Never

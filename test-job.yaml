@@ -4,10 +4,14 @@ metadata:
   name: gameoflife
 spec:
   template:
+    metdata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
     spec:
       containers:
       - name: gameoflife
-        image: default-route-openshift-image-registry.apps.openvino5.3q12.p1.openshiftapps.com/test/gameoflife
+        image: gameoflife:local-build
+        imagePullPolicy: Always
         command: ["python3",  "/usr/bin/build.py"]
         env:
         - name: DB

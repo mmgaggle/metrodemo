@@ -12,7 +12,7 @@ ENV JUPYTER_ENABLE_LAB="true" \
 USER root
 
 RUN yum install -y git maven
-RUN pip install shortuuid psycopg2
+RUN pip install shortuuid pyodbc
 RUN mkdir -p /opt/builds
 COPY build.py /usr/bin/build.py
 RUN chmod 777 /opt/builds

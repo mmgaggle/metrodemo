@@ -12,7 +12,7 @@ user = os.getenv('USER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
-conn = pyodbc.connect('Driver={MariaDB ODBC 3.1 Driver};'
+conn = pyodbc.connect('Driver=MariaDB;'
                       'Server=${host};'
                       'Database=${db};'
                       'uid=${user};'

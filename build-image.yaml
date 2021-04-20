@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: gameoflife
+  labels:
+    application: gameoflife
+---
+kind: BuildConfieg
+apiVersion: build.openshift.io/v1
+metadata:
+  name: "gameoflife"
+spec:
+  source: 
+    git:
+      uri: "https://gitlab.consulting.redhat.com/cblum/metrodemo"
+  strategy: 
+    sourceStrategy:
+      output: 
+        to:
+          kind: "ImageStreamTag"
+          name: "gameoflife:latest"

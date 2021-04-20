@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gameoflife
+spec:
+  template:
+    spec:
+      containers:
+      - name: gameoflife
+        image: default-route-openshift-image-registry.apps.openvino5.3q12.p1.openshiftapps.com/test/gameoflife
+        command: ["python3",  "/usr/bin/build.py"]
+        env:
+        - name: DB
+          value: 'redhat'
+        - name: SERVER
+          value: '172.30.25.239'
+      restartPolicy: Never

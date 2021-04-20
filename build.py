@@ -12,9 +12,6 @@ user = os.getenv('USER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
-cnxn.setdecoding(pyodbc.SQL_WCHAR, encoding='utf-8')
-cnxn.setencoding(encoding='utf-8')
-
 conn = pyodbc.connect('Driver={SQL Server};'
                       'Server=${sqlAddr};'
                       'Database=${db};'

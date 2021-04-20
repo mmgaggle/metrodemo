@@ -8,6 +8,18 @@ spec:
       annotations:
         alpha.image.policy.openshift.io/resolve-names: '*'
     spec:
+      affinity:
+        nodeAffinity: 
+          requiredDuringSchedulingIgnoredDuringExecution: 
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In 
+                values:
+                - perf1-mz8bt-worker-d2hdm
+                - perf1-mz8bt-worker-k68rv
+                - perf1-mz8bt-worker-ntkp8
+                - perf1-mz8bt-worker-qpwsr
       containers:
       - name: gameoflife
         image: gameoflife:local-build

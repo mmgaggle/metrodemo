@@ -13,7 +13,7 @@ USER root
 
 RUN curl -O https://downloads.mariadb.com/Connectors/odbc/connector-odbc-3.1.7/mariadb-connector-odbc-3.1.7-ga-rhel7-x86_64.tar.gz
 RUN tar xvzf mariadb-connector-odbc-3.1.7-ga-rhel7-x86_64.tar.gz
-COPY lib64/libmaodbc.so /usr/lib64
+COPY lib64/libmaodbc.so /usr/lib64/libmaodbc.so
 RUN yum install -y git maven unixODBC-devel mariadb-connector-odbc
 RUN pip install wheel
 RUN pip install shortuuid pyodbc

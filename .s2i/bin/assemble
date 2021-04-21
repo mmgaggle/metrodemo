@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -x
+
+set -eo pipefail
+
+APP_ROOT=${APP_ROOT:-/opt/app-root/src}
+
+
+# Run the original Python S2I assemble script to install packages.
+
+/usr/libexec/s2i/assemble
+
+# Remove the cached package dependencies files generated from s2i assemble script.
+rm -rf /tmp/Pipfile.lock
+rm -rf /tmp/requirements.txt
+
+########################################################################
+# INFO: Install everything that's required for Jupyter notebooks here.
+########################################################################
+
+# Install pipenv for jupyter-nbrequirements to use
+# TODO: This should be removed once nbrequirements can use Thoth + micropipenv only
+pip install pipenv==2020.11.15
+
+# This S2I assemble script is only used when creating the custom image.
+# For when running the image, or using it as a S2I builder, we use a second
+# set of custom S2I scripts. We now need to move these into the correct
+# location and have the custom image use those by dropping in an image
+# metadata file which overrides the labels of the base image.
+
+mkdir -p ${APP_ROOT}/.s2i
+
+# Make sure the S2I source directory is empty as we will use the image
+# produced to run further S2I builds
+
+(shopt -s dotglob ; rm -rf ${APP_ROOT}/src/*)
+
+# Fixup permissions on directories and files.
+
+fix-permissions /opt/app-root

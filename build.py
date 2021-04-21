@@ -11,6 +11,7 @@ db = os.getenv('DB', 'mariadb')
 user = os.getenv('DBUSER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
+build_id = os.getenv('BUILD_ID', shortuuid.uuid())
 
 db = mysql.connector.connect(
     host = host,

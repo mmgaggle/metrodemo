@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 shortuuid = "*"
 mysqlclient = "*"
+mysql-connector = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 

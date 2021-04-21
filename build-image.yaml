@@ -19,8 +19,8 @@ spec:
     git:
       uri: https://github.com/mmgaggle/metrodemo.git
       branch: kyle
-  strategy: 
+  strategy:
     dockerStrategy:
       from:
         kind: DockerImage
-        name: registry.access.redhat.com/ubi8/s2i-base
+        name: registry.access.redhat.com/ubi8/python-38

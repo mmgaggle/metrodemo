@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/s2i-base
+FROM registry.access.redhat.com/ubi8/python-38
 ENV ENABLE_MICROPIPENV="1" \
     UPGRADE_PIP_TO_LATEST="1"
 USER root

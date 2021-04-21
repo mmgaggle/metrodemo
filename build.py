@@ -8,7 +8,7 @@ print('ready for work!')
 
 host = os.getenv('SERVER', 'mariadb.sysbench')
 db = os.getenv('DB', 'mariadb')
-user = os.getenv('USER', 'sysbench')
+user = os.getenv('DBUSER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 

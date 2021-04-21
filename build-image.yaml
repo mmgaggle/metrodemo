@@ -23,4 +23,4 @@ spec:
     dockerStrategy:
       from:
         kind: DockerImage
-        name: ubi8/s2i-base
+        name: registry.access.redhat.com/ubi8/s2i-base

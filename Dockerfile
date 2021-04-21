@@ -11,7 +11,7 @@ ENV JUPYTER_ENABLE_LAB="true" \
     THOTH_PROVENANCE_CHECK="0"
 USER root
 
-RUN yum install -y epel-release python3-pip git maven
+RUN yum install -y epel-release python-pip git maven
 RUN pip install shortuuid MySQL-python
 RUN mkdir -p /opt/builds
 COPY build.py /usr/bin/build.py

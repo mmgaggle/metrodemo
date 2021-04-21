@@ -22,7 +22,7 @@ RUN install lib64/mariadb/plugin/client_ed25519.so /usr/lib64/mariadb/plugin/
 RUN install lib64/mariadb/plugin/dialog.so /usr/lib64/mariadb/plugin/
 RUN install lib64/mariadb/plugin/mysql_clear_password.so /usr/lib64/mariadb/plugin/
 RUN install lib64/mariadb/plugin/sha256_password.so /usr/lib64/mariadb/plugin/
-RUN yum install -y git maven unixODBC-devel openssl-devel openssl strace
+RUN yum install --enablerepo=rhel-7-server-optional-rpms -y git maven unixODBC-devel openssl-devel openssl strace
 RUN pip install wheel
 RUN pip install shortuuid pyodbc
 RUN mkdir -p /opt/builds

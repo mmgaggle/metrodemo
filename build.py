@@ -20,8 +20,7 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS metroDemo (
+create_tbl = """CREATE TABLE IF NOT EXISTS metroDemo (
     id serial PRIMARY KEY,
     submit_time DATETIME,
     complete_time DATETIME,
@@ -29,23 +28,24 @@ CREATE TABLE IF NOT EXISTS metroDemo (
     logs VARCHAR,
     artifact VARCHAR
 )
-
-''')
+"""
+cursor.execute(create_tbl)
 
 print('Creating table if it does not exist yet')
-con.commit()
+db.commit()
 
-cursor.execute('''
+add_build = """
 INSERT INTO metroDemo (id, submit_time, source)
        VALUES (%s,
                NOW(),
                "https://github.com/lavaliere/game-of-life",
 )
 
-''', [build_id])
+"""
 
+cursor.execute(add_build,(build_id))
 print('Adding build to the tracker')
-con.commit()
+db.commit()
 
 # Random sleep to splay build times
 sleep(randint(1, 5))
@@ -59,16 +59,16 @@ build_dir = path + game-of-life
 os.chdir(build_dir)
 os.system("mvn install")
 
-cursor.execute('''
+update_build = """
 UPDATE metroDemo
     SET complete_time = NOW(),
         logs = 'view',
         artifact = 'download'
     WHERE
     id = %s
-
-''', [build_id])
+"""
+cursor.execute(update_build,(build_id))
 
 print('jobs done!')
-con.commit()
+db.commit()
 

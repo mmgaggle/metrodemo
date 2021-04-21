@@ -1,3 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: builds
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: ocs-storagecluster-cephfs
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -22,5 +35,13 @@ spec:
         image: gameoflife:local-build
         imagePullPolicy: Always
         command: ["python3",  "/usr/bin/build.py"]
-        #command: ["tail", "-f", "/dev/null"]
+        volumeMounts:
+          - name: builds
+            mountPath: /opt/builds
+      volumes:
+        - name: builds
+          persistentVolumeClaim:
+            claimName: builds
+            readOnly: false
       restartPolicy: Never
+

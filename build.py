@@ -12,7 +12,7 @@ user = os.getenv('DBUSER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
-db = mysql.connect(
+db = mysql.connector.connect(
     host = host,
     user = user,
     passwd = password,

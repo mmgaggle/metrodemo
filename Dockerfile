@@ -12,7 +12,7 @@ ENV JUPYTER_ENABLE_LAB="true" \
 USER root
 
 RUN yum install -y git maven
-RUN pip install wheel
+RUN pip install wheel configparser
 RUN pip install shortuuid MySQL-python
 RUN mkdir -p /opt/builds
 COPY build.py /usr/bin/build.py

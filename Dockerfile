@@ -11,20 +11,9 @@ ENV JUPYTER_ENABLE_LAB="true" \
     THOTH_PROVENANCE_CHECK="0"
 USER root
 
-RUN curl -O https://downloads.mariadb.com/Connectors/odbc/connector-odbc-3.1.7/mariadb-connector-odbc-3.1.7-ga-rhel7-x86_64.tar.gz
-RUN tar xvzf mariadb-connector-odbc-3.1.7-ga-rhel7-x86_64.tar.gz
-RUN install lib64/libmaodbc.so /usr/lib64/
-RUN install -d /usr/lib64/mariadb/
-RUN install -d /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/auth_gssapi_client.so /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/caching_sha2_password.so /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/client_ed25519.so /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/dialog.so /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/mysql_clear_password.so /usr/lib64/mariadb/plugin/
-RUN install lib64/mariadb/plugin/sha256_password.so /usr/lib64/mariadb/plugin/
-RUN yum install -y git maven unixODBC-devel openssl-devel openssl strace
+RUN yum install -y git maven
 RUN pip install wheel
-RUN pip install shortuuid pyodbc
+RUN pip install shortuuid MySQL-python
 RUN mkdir -p /opt/builds
 COPY build.py /usr/bin/build.py
 RUN chmod 777 /opt/builds

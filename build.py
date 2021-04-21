@@ -1,4 +1,4 @@
-import pyodbc
+import mysql.connector
 import os
 import shortuuid
 from random import randint
@@ -12,14 +12,14 @@ user = os.getenv('USER', 'sysbench')
 password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
-conn = pyodbc.connect('Driver=MariaDB;'
-                      'Server=${host};'
-                      'Database=${db};'
-                      'uid=${user};'
-                      'pwd=${password};'
-                      'Trusted_Connection=yes;')
+db = mysql.connect(
+    host = ${host},
+    user = ${user},
+    passwd = ${password},
+    database = ${db}
+)
 
-cursor = con.cursor()
+cursor = db.cursor()
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS metroDemo (
     id serial PRIMARY KEY,

@@ -1,6 +1,6 @@
 FROM ubi8
 ENV ENABLE_MICROPIPENV="1" \
-    UPGRADE_PIP_TO_LATEST="1" \
+    UPGRADE_PIP_TO_LATEST="1"
 USER root
 
 COPY .s2i/bin /tmp/scripts

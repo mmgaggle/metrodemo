@@ -13,7 +13,8 @@ RUN yum install -y git maven
 
 RUN mkdir -p /opt/builds
 RUN chmod 777 /opt/builds
-RUN chmod 755 /tmp/build.py
+COPY build.py /usr/bin/build.py
+RUN chmod 755 /usr/bin/build.py
 
 USER 1001
 

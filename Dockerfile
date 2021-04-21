@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.26.0
+FROM python:3-alpine
 ENV JUPYTER_ENABLE_LAB="true" \
     ENABLE_MICROPIPENV="1" \
     UPGRADE_PIP_TO_LATEST="1" \

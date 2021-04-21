@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS metroDemo (
     source VARCHAR,
     logs VARCHAR,
     artifact VARCHAR
-);
+)
 
 ''')
 
@@ -40,9 +40,9 @@ INSERT INTO metroDemo (id, submit_time, source)
        VALUES (%s,
                NOW(),
                "https://github.com/lavaliere/game-of-life",
-);
+)
 
-''', [build_id], [build_id])
+''', [build_id])
 
 print('Adding build to the tracker')
 con.commit()
@@ -65,7 +65,7 @@ UPDATE metroDemo
         logs = 'view',
         artifact = 'download'
     WHERE
-    id = %s;
+    id = %s
 
 ''', [build_id])
 

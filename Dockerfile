@@ -1,4 +1,4 @@
-FROM centos7
+FROM quay.io/centos/centos:stream
 ENV JUPYTER_ENABLE_LAB="true" \
     ENABLE_MICROPIPENV="1" \
     UPGRADE_PIP_TO_LATEST="1" \

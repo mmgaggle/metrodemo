@@ -13,10 +13,10 @@ password = os.getenv('PASS', 'sysbench')
 myname = os.getenv('MYNAME', 'UNKNOWN')
 
 db = mysql.connect(
-    host = {host},
-    user = {user},
-    passwd = {password},
-    database = {db}
+    host = host,
+    user = user,
+    passwd = password,
+    database = db
 )
 
 cursor = db.cursor()

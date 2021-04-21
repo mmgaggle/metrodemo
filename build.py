@@ -24,15 +24,15 @@ create_tbl = """CREATE TABLE IF NOT EXISTS metroDemo (
     id serial PRIMARY KEY,
     submit_time DATETIME,
     complete_time DATETIME,
-    source VARCHAR,
-    logs VARCHAR,
-    artifact VARCHAR
+    source TEXT,
+    logs TEXT,
+    artifact TEXT
 )
 """
 cursor.execute(create_tbl)
-
 print('Creating table if it does not exist yet')
 db.commit()
+
 
 add_build = """
 INSERT INTO metroDemo (id, submit_time, source)
@@ -40,16 +40,17 @@ INSERT INTO metroDemo (id, submit_time, source)
                NOW(),
                "https://github.com/lavaliere/game-of-life",
 )
-
 """
-
 cursor.execute(add_build,(build_id))
 print('Adding build to the tracker')
 db.commit()
 
+
 # Random sleep to splay build times
 sleep(randint(1, 5))
 
+
+# Build some software!
 cmd = "mkdir -p /opt/builds/" +  build_id
 os.system(cmd)
 path = "/opt/builds/" +  build_id
@@ -58,6 +59,8 @@ os.system("git clone https://github.com/lavaliere/game-of-life")
 build_dir = path + game-of-life
 os.chdir(build_dir)
 os.system("mvn install")
+
+
 
 update_build = """
 UPDATE metroDemo
@@ -68,7 +71,6 @@ UPDATE metroDemo
     id = %s
 """
 cursor.execute(update_build,(build_id))
-
 print('jobs done!')
 db.commit()
 

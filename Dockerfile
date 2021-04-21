@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM centos7
 ENV JUPYTER_ENABLE_LAB="true" \
     ENABLE_MICROPIPENV="1" \
     UPGRADE_PIP_TO_LATEST="1" \

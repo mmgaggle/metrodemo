@@ -23,4 +23,4 @@ spec:
     dockerStrategy:
       from:
         kind: DockerImage
-        name: python:3-alpine
+        name: centos7

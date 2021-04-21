@@ -21,6 +21,6 @@ spec:
       - name: gameoflife
         image: gameoflife:local-build
         imagePullPolicy: Always
-        command: ["python3",  "/usr/bin/build.py"]
-        #command: ["tail", "-f", "/dev/null"]
+        #command: ["python3",  "/usr/bin/build.py"]
+        command: ["tail", "-f", "/dev/null"]
       restartPolicy: Never

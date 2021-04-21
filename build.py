@@ -21,8 +21,9 @@ db = mysql.connector.connect(
 )
 
 cursor = db.cursor()
-create_tbl = """CREATE TABLE IF NOT EXISTS metroDemo (
+create_tbl = """CREATE TABLE IF NOT EXISTS metroDemoBuilds (
     id serial PRIMARY KEY,
+    build TEXT,
     submit_time DATETIME,
     complete_time DATETIME,
     source TEXT,
@@ -36,13 +37,13 @@ db.commit()
 
 
 add_build = """
-INSERT INTO metroDemo (id, submit_time, source)
+INSERT INTO metroDemoBuilds (build, submit_time, source)
        VALUES (%s,
                NOW(),
-               "https://github.com/lavaliere/game-of-life",
+               "https://github.com/lavaliere/game-of-life"
 )
 """
-cursor.execute(add_build,(build_id))
+cursor.execute(add_build,[build_id])
 print('Adding build to the tracker')
 db.commit()
 
@@ -57,21 +58,20 @@ os.system(cmd)
 path = "/opt/builds/" +  build_id
 os.chdir(path)
 os.system("git clone https://github.com/lavaliere/game-of-life")
-build_dir = path + game-of-life
+build_dir = path + '/game-of-life'
 os.chdir(build_dir)
 os.system("mvn install")
 
 
 
 update_build = """
-UPDATE metroDemo
+UPDATE metroDemoBuilds
     SET complete_time = NOW(),
         logs = 'view',
         artifact = 'download'
     WHERE
-    id = %s
+    build = %s
 """
-cursor.execute(update_build,(build_id))
+cursor.execute(update_build,[build_id])
 print('jobs done!')
 db.commit()
-

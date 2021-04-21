@@ -11,6 +11,8 @@ apiVersion: build.openshift.io/v1
 metadata:
   name: gameoflife
 spec:
+  lookupPolicy:
+    local: true
   output:
     to:
       kind: ImageStreamTag

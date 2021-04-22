@@ -11,6 +11,8 @@ apiVersion: build.openshift.io/v1
 metadata:
   name: gameoflife
 spec:
+  triggers:
+    - type: "ConfigChange"
   lookupPolicy:
     local: true
   output:

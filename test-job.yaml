@@ -30,6 +30,15 @@ spec:
                 operator: NotIn 
                 values:
                 - perf1-mz8bt-worker-cv55w
+      tolerations:
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 30
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 30
       containers:
       - name: gameoflife
         image: gameoflife:local-build
